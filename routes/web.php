@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'PagesController@index');
+// Route::get('/show', 'PagesController@show');
+Route::get('/services', 'PagesController@show_user_polls');
 
 
 Route::get('/', 'PollController@index');
