@@ -15,8 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
+
+Route::get('/', 'PollController@index');
+Route::get('/index', 'PollController@index');
+
+Route::get('manage/show/{user_id}', 'PollController@show_user_polls');
+Route::get('/show/{id}', 'PollController@show');
+
+
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'PollController@index');
