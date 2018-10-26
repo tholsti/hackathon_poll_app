@@ -11,8 +11,21 @@
         <p class="card-text">Updated at: {{ $poll->updated_at }}</p>
         <p class="card-text">Created at: {{ $poll->created_at }}</p>
         <p class="card-text"></p>
-        <a href="#" class="card-link">See more</a>
-        <a href="#" class="card-link">Vote</a>
+        
+        <div class="options">
+          @foreach ($options as $option)
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+
+              <label class="custom-control-label" for="customCheck1"> 
+                {{ $option->text }}
+              </label>
+            </div>
+          @endforeach
+        </div>
+        
+        <a href="/" class="card-link">Go back</a>
+        <a href="#" class="card-link">Submit</a>
       </div>
   </div>
 

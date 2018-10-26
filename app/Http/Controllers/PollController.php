@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Poll;
 use App\Option;
 use App\User;
-use Illuminate\Http\RequestW;
+use Illuminate\Http\Request;
 use Auth;
 
 class PollController extends Controller
@@ -23,7 +23,8 @@ class PollController extends Controller
     {
         $polls = Poll::orderBy('updated_at', 'desc')
             ->get();
-
+        // $options = Option::all()->get();
+        
         return view('index')->with('polls', $polls);
     }
 
@@ -77,15 +78,15 @@ class PollController extends Controller
     public function show($id)
     {   
         $poll = Poll::find($id);
-        $options = Option::where('poll_id', $id);
+        $options = Option::where('poll_id', $id)->get();
 
-        dd($options);
-        return view('show')->with('poll', $poll);
+        // dd($options);
+        return view('show', compact('poll', 'options'));
     }
     
-    public function show_user_polls($user_id)
+    public function show_user_polls($id)
     {   
-        $user = User::find($user_id);
+        $user = User::find($id);
 
         return view('manage.show')->with('polls', $user->poll());
     }
