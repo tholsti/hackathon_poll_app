@@ -37,6 +37,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ action('PollController@manage') }}">Manage your polls</a>
+                        </li> 
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -66,6 +69,7 @@
                                 </div>
                             </li>
                         @endguest
+
                     </ul>
                 </div>
             </div>

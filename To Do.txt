@@ -1,6 +1,6 @@
-1) Auth page
+1) Auth page - DONE
 
-2) Database model
+2) Database model - DONE
   POLLS
   - new table for each Poll
   - each Poll contains an array of selections
@@ -14,7 +14,7 @@
 
 
 3) Poll creation form
-  - 
+  - each user can create a poll
 
 4) View polls
   - Anybody can view existing polls - index page to show all polls

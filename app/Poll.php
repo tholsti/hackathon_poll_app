@@ -14,10 +14,10 @@ class Poll extends Model
     ];
 
     public function options() {
-        $this->hasMany('App\Option');
+        return $this->hasMany('App\Option');
     }
 
     public function user() {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }

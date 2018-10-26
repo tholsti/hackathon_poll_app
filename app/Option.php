@@ -12,6 +12,6 @@ class Option extends Model
     ];
 
     public function poll() {
-        $this-belongsTo('App\Poll');
+        return $this-belongsTo('App\Poll');
     }
 }
