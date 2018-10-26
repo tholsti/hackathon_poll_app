@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 
 
+Route::get('/', 'PollController@index');
 Route::get('/index', 'PollController@index');
 
-// Route::get('/show', 'PollController@show');
+// Route::get('/my_posts', 'PollController@show');
 Route::get('/show/{id}', 'PollController@show');
 
 
