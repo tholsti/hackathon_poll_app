@@ -29,3 +29,8 @@ Route::get('/show/{id}', 'PollController@show');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'PollController@index');
+Route::get('/show/{code}', 'PollController@show');
+Route::get('/manage/create', 'PollController@create');
+Route::post('/manage/create/', 'PollController@store'); 

@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Poll;
-use App\User;
 use App\Option;
-
-// use Illuminate\Support\Facades\DB;
-
+use App\User;
+use Illuminate\Http\RequestW;
+use Auth;
 
 class PollController extends Controller
 {
@@ -35,7 +34,7 @@ class PollController extends Controller
      */
     public function create()
     {
-        //
+        return view('manage.create');
     }
 
     /**
@@ -46,7 +45,27 @@ class PollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::id();
+        
+        $code = uniqid();
+        $poll = Poll::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'code' => $code,
+            'user_id' => $user
+        ]);
+        
+        $options = $request->option;
+
+        foreach($options as $option) {
+
+        Option::create([
+            'text' => $option,
+            'poll_id' => $poll->id
+        ]);
+        }
+
+
     }
 
     /**
