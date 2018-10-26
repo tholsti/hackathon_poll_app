@@ -34,3 +34,7 @@ Route::get('/', 'PollController@index');
 Route::get('/show/{code}', 'PollController@show');
 Route::get('/manage/create', 'PollController@create');
 Route::post('/manage/create/', 'PollController@store'); 
+Route::get('/manage', 'PollController@manage');
+Route::get('/manage/edit/{id}', 'PollController@edit');
+Route::post('/manage/edit/{id}', 'PollController@update');
+Route::get('/manage/delete/{id}', 'PollController@delete');

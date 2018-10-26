@@ -66,7 +66,7 @@ class PollController extends Controller
         ]);
         }
 
-
+        return redirect(action('PollController@manage'));
     }
 
     /**
@@ -105,7 +105,25 @@ class PollController extends Controller
      */
     public function edit($id)
     {
-        //
+        $poll = Poll::find($id);
+        $options = Option::where('poll_id', $id)->get();
+
+        return view('manage.edit',compact('poll','options'));
+
+        return redirect('PollController@manage');
+    }
+
+    public function manage($id = null)
+    {
+        $user = Auth::id();
+        
+        $polls = Poll::orderBy('updated_at', 'desc')
+            ->get();
+
+        $options = Option::where('poll_id',$polls)->get();
+
+        // $polls = Poll::where('user_id', $user);
+        return view('manage.manage', compact('polls', 'options'));
     }
 
     /**
@@ -117,7 +135,25 @@ class PollController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $poll = Poll::findOrFail($id);
+        
+        $poll->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        
+        $options = $request->option;
+
+        foreach($options as $option) {
+
+        $opt = Option::findOrFail($id);
+        $opt->update([
+            'text' => $option,
+            'poll_id' => $poll->id
+        ]);
+        }
+
+        return redirect(action('PollController@manage'));
     }
 
     /**
@@ -128,6 +164,7 @@ class PollController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $poll = Poll::find($id);
+        $poll->delete();
     }
 }

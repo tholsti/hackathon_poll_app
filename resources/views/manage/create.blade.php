@@ -3,7 +3,7 @@
 @section('content')
 
 
-CREATE NEW POLL
+<h1>CREATE NEW POLL</h1>
 
 <form action="{{ action('PollController@store')}}" method="post">
   @csrf
