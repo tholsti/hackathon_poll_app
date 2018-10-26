@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Poll;
 use App\Option;
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class PollController extends Controller
 {
@@ -36,23 +38,27 @@ class PollController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::id();
+        
         $code = uniqid();
         $poll = Poll::create([
             'name' => $request->name,
             'description' => $request->description,
-            'code' => $code
+            'code' => $code,
+            'user_id' => $user
         ]);
         
         $options = $request->option;
 
-        // dd($options);
-        foreach($options as $key => $option) {
+        foreach($options as $option) {
 
         Option::create([
             'text' => $option,
             'poll_id' => $poll->id
         ]);
         }
+
+
     }
 
     /**
