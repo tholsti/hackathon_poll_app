@@ -1,0 +1,41 @@
+1) Auth page
+
+2) Database model
+  POLLS
+  - new table for each Poll
+  - each Poll contains an array of selections
+  - each selection stores number of botes
+  - CREATE table; CREATE array with options
+  - unique ID
+
+  USERS
+  - each user can vote once in each Poll
+  - each user can create a Poll
+
+
+3) Poll creation form
+  - 
+
+4) View polls
+  - Anybody can view existing polls - index page to show all polls
+  - Only logged in users can see results - show page protected by Auth
+
+5) Voting
+  - Only logged in users can vote
+
+6) Poll management
+  - View user's own polls
+  - See their results
+  - Modify them
+  - Remove them
+
+
+VIEWS
+  -- polls.index (public view for all)
+  -- polls.show (show results of individual polls)
+  -- polls.create
+  -- polls.manage (route /manage/polls)
+
+
+USER FUNCTIONALITY
+  1) 
