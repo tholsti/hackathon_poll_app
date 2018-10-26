@@ -42,12 +42,17 @@ class PollController extends Controller
             'description' => $request->description,
             'code' => $code
         ]);
+        
+        $options = $request->option;
 
-        $options = Option::create([
-            'text' => $request->option_1,
+        // dd($options);
+        foreach($options as $key => $option) {
+
+        Option::create([
+            'text' => $option,
             'poll_id' => $poll->id
         ]);
-
+        }
     }
 
     /**
