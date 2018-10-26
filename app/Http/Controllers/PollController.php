@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Poll;
 use App\User;
+use App\Option;
 
 // use Illuminate\Support\Facades\DB;
 
@@ -57,7 +58,9 @@ class PollController extends Controller
     public function show($id)
     {   
         $poll = Poll::find($id);
-        // dd($id);
+        $options = Option::where('poll_id', $id);
+
+        dd($options);
         return view('show')->with('poll', $poll);
     }
     
@@ -67,6 +70,12 @@ class PollController extends Controller
 
         return view('manage.show')->with('polls', $user->poll());
     }
+
+    // public function show_options($option_id) {
+    //     $options = Option::
+
+    //     return view('show')->with('options' $)
+    // }
 
     /**
      * Show the form for editing the specified resource.

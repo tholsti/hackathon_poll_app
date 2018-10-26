@@ -9,6 +9,10 @@
         <h5 class="card-title">{{ $poll->name }}</h5>
         <h6 class="card-subtitle mb-2 text-muted"># {{ $poll->code }}</h6>
         <p class="card-text">Description: {{ $poll->description }}</p>
+      
+        @foreach($options as $option)
+          {{ $option->name }}  
+        @endforeach
         <p class="card-text">Updated at: {{ $poll->updated_at }}</p>
         <p class="card-text">Created at: {{ $poll->created_at }}</p>
         <p class="card-text"></p>
